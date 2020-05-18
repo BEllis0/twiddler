@@ -14,32 +14,32 @@ streams.users.douglascalhoun = [];
 window.users = Object.keys(streams.users);
 
 // utility function for adding tweets to our data structures
-var addTweet = function(newTweet){
-  var username = newTweet.user;
+const addTweet = newTweet => {
+  let username = newTweet.user;
   streams.users[username].unshift(newTweet);
   streams.home.unshift(newTweet);
 };
 
 // utility function
-var randomElement = function(array){
-  var randomIndex = Math.floor(Math.random() * array.length);
+const randomElement = array => {
+  let randomIndex = Math.floor(Math.random() * array.length);
   return array[randomIndex];
 };
 
 // random tweet generator
-var opening = ['just', '', '', '', '', 'ask me how i', 'completely', 'nearly', 'productively', 'efficiently', 'last night i', 'the president', 'that wizard', 'a ninja', 'a seedy old man'];
-var verbs = ['downloaded', 'interfaced', 'deployed', 'developed', 'built', 'invented', 'experienced', 'navigated', 'aided', 'enjoyed', 'engineered', 'installed', 'debugged', 'delegated', 'automated', 'formulated', 'systematized', 'overhauled', 'computed'];
-var objects = ['my', 'your', 'the', 'a', 'my', 'an entire', 'this', 'that', 'the', 'the big', 'a new form of'];
-var nouns = ['cat', 'koolaid', 'system', 'city', 'worm', 'cloud', 'potato', 'money', 'way of life', 'belief system', 'security system', 'bad decision', 'future', 'life', 'pony', 'mind'];
-var tags = ['#techlife', '#burningman', '#sf', 'but only i know how', 'for real', '#sxsw', '#ballin', '#omg', '#yolo', '#magic', '', '', '', ''];
+let opening = ['just', '', '', '', '', 'ask me how i', 'completely', 'nearly', 'productively', 'efficiently', 'last night i', 'the president', 'that wizard', 'a ninja', 'a seedy old man'];
+let verbs = ['downloaded', 'interfaced', 'deployed', 'developed', 'built', 'invented', 'experienced', 'navigated', 'aided', 'enjoyed', 'engineered', 'installed', 'debugged', 'delegated', 'automated', 'formulated', 'systematized', 'overhauled', 'computed'];
+let objects = ['my', 'your', 'the', 'a', 'my', 'an entire', 'this', 'that', 'the', 'the big', 'a new form of'];
+let nouns = ['cat', 'koolaid', 'system', 'city', 'worm', 'cloud', 'potato', 'money', 'way of life', 'belief system', 'security system', 'bad decision', 'future', 'life', 'pony', 'mind'];
+let tags = ['#techlife', '#burningman', '#sf', 'but only i know how', 'for real', '#sxsw', '#ballin', '#omg', '#yolo', '#magic', '', '', '', ''];
 
-var randomMessage = function(){
+const randomMessage = () => {
   return [randomElement(opening), randomElement(verbs), randomElement(objects), randomElement(nouns), randomElement(tags)].join(' ');
 };
 
 // generate random tweets on a random schedule
-var generateRandomTweet = function(){
-  var tweet = {};
+const generateRandomTweet = () => {
+  let tweet = {};
   
   // filter out visitor, so as to only be used for user input
   let filterVisitor = users.filter(item => item !== 'visitor')
@@ -50,24 +50,28 @@ var generateRandomTweet = function(){
   addTweet(tweet);
 };
 
-for(var i = 0; i < 10; i++){
+// start with 10 tweets
+for (var i = 0; i < 10; i++){
   generateRandomTweet();
 }
 
-var scheduleNextTweet = function(){
+// func to generate and queue a tweet
+const scheduleNextTweet = () => {
   generateRandomTweet();
+  // use setTimeout to push tweets
   setTimeout(scheduleNextTweet, Math.random() * 1500);
 };
+// run schedule func
 scheduleNextTweet();
 
 // write tweets
-var writeTweet = function(message){
+const writeTweet = message => {
   if(!visitor){
     throw new Error('set the global visitor property!');
   }
-  var tweet = {};
+  let tweet = {};
   tweet.user = 'visitor';
   tweet.message = message;
   tweet.created_at = new Date();
-  addTweet(tweet);
+  addTweet(tweet); // add tweet to queue
 };
