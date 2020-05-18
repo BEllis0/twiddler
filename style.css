@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
+
+* {
+    font-family: 'Fira Sans', sans-serif;
+}
+
+*:focus {
+    outline: none;
+}
+
+h1, h3, .tweetAuthor {
+    font-weight: 650;
+}
+
+.logo, .settingsButton {
+    width: 40px;
+    height: 40px;
+}
+
+.logo {
+    padding-left: 50px;
+}
+
+.settingsButton {
+    padding-right: 50px;
+}
+
+.divider {
+    width: 150px;
+    height: 2px;
+    border-bottom: 2px solid rgb(224, 231, 237);
+    padding: 10px;
+}
+
+.tweetDivider {
+    width: 100%;
+    height: 2px;
+    border-bottom: 2px solid rgb(224, 231, 237);
+}
+
+.body {
+    width: 100%;
+    height: 100%;
+    margin-bottom: -20px;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar {
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid rgb(224, 231, 237);
+}
+
+.sidebar {
+    width: 20vw;
+    height: 90vh;
+    margin: 0 auto;
+    align-items: center;
+    overflow: scroll;
+}
+
+.sidebarButtons {
+    padding: 20px 10px  0 50px;
+}
+
+.mainView {
+    width: 80vw;
+    height: 90vh;
+    overflow: scroll;
+    border-left: 2px solid rgb(224, 231, 237);
+}
+
+.tweet, .friendsList {
+    padding: 20px;
+    border-bottom: 2px solid rgb(224, 231, 237);
+}
+
+.tweet:hover {
+    background-color: #f7f7f7;
+}
+
+.tweetButton {
+    padding: 12px 20px;
+    background-color: rgb(29,141, 238);
+    color: white;
+    font-size: 16px;
+    border-radius: 50px 50px;
+    width: 150px;
+}
+
+.tweetButton:hover {
+    background-color: rgb(25, 124, 209);
+}
+
+.tweetFormSection {
+    padding: 25px 50px;
+    border-bottom: 5px solid rgb(224, 231, 237);
+}
+
+form.tweetForm {
+    margin: 0 auto;
+    padding: 20px;
+    width: 500px;
+}
+
+#tweetInput {
+    width: 250px;
+    border: hidden;
+    background-color: transparent;
+    font-size: 16px;
+}
+
+#tweetSubmit {
+    color: white;
+    font-size: 16px;
+    background-color: rgb(29,141, 238);
+    padding: 10px 15px;
+    border-radius: 50px 50px;
+
+}
+
+.hashtagList {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+}
+
+.hashtag {
+    margin-left: 15px;
+}
+
+.moreTweetsButton {
+    border: 2px solid rgb(224, 231, 237);
+    font-size: 16px;
+    color: black;
+    margin-top: -2px !important;
+    padding: 5px;
+}
+
+.mobileButtons {
+    display: none;
+}
+
+@media (min-width: 416px) and (max-width: 1024px) {
+    .mainView {
+        width: 70vw;
+    }
+
+    .sidebar {
+        width: 30vw;
+    }
+}
+
+@media (min-width: 0px) and (max-width: 415px) {
+    .flex {
+        flex-direction: row;
+        padding-right: 6px;
+
+    }
+
+    html {
+        height: 1vh;
+        overflow: hidden;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    .body {
+        height: 1vh;
+        margin-bottom: 0px;
+        overflow: hidden
+    }
+
+    .mobileButtons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+        padding: 10px;
+    }
+
+    .mainView {
+        width: 100%;
+        margin: 0 auto;
+        height: 70vh;
+    }
+
+    .sidebar, .hashtagList, .sidebarFriendsList, #sidebarFriendsList {
+        display: none;
+        height: 0px;
+    }
+
+    .sidebarButtons {
+        margin: 0 auto;
+        padding: 5px;
+    }
+
+    .pagebtn {
+        margin-left: 5px;
+    }
+
+    .tweetFormSection {
+        padding: 20px 0px;
+    }
+
+    form.tweetForm {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 5px;
+    }
+
+    #tweetInput {
+        padding: 20px 0px;
+    }
+}
